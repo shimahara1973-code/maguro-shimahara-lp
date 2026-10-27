@@ -28,6 +28,9 @@
 *{box-sizing:border-box}
 body{margin:0;background:var(--sumi);color:var(--kinari);font-family:var(--mincho);font-size:16px;line-height:1.9;font-variant-numeric:lining-nums;-webkit-font-smoothing:antialiased}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--sumi)}
+/* PCでは、スマホと同じ見た目を画面の中央にスマホほどの幅で置く */
+html{background:#070706}
+body{max-width:480px;margin-inline:auto;min-height:100vh;box-shadow:0 0 0 1px var(--line),0 0 80px rgba(0,0,0,.6)}
 .wrap{max-width:1160px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 p{margin:0}
 a{color:inherit}
@@ -60,7 +63,7 @@ header.top .wrap{display:flex;align-items:center;justify-content:space-between;g
 .side .price{color:var(--muted);font-size:.9rem}
 .side .price b{font-family:var(--serif-en);font-weight:600;font-size:1.35rem;color:var(--kinari)}
 
-@media (max-width:860px){
+@media all{  /* PCでもスマホと同じレイアウトにする */
   .stage{padding-top:0;position:relative}
   .stage .wrap{padding-left:0;padding-right:0}
   .stage-grid{grid-template-columns:1fr;gap:0}
@@ -101,7 +104,7 @@ header.top .wrap{display:flex;align-items:center;justify-content:space-between;g
 .info dd{margin:0}
 .info small{color:var(--muted)}
 .info .tel{font-family:var(--serif-en);font-weight:600;font-size:1.25rem;letter-spacing:.04em;user-select:all}
-@media (max-width:760px){.info-grid{grid-template-columns:1fr}}
+@media all{.info-grid{grid-template-columns:1fr}}
 
 /* 最後の歓迎：入口の動画と一言 */
 .welcome{border-top:1px solid var(--line);padding-block:clamp(64px,9vw,112px)}
@@ -113,7 +116,7 @@ header.top .wrap{display:flex;align-items:center;justify-content:space-between;g
 .welcome-copy{position:absolute;z-index:1;top:6%;right:5%;margin:0;writing-mode:vertical-rl;font-family:var(--gothic);font-weight:400;font-size:clamp(2.2rem,4vw,3.4rem);line-height:1.35;letter-spacing:.1em;color:var(--kinari);text-shadow:0 2px 16px rgba(0,0,0,.75)}
 .welcome-copy .red{color:var(--maguro);font-size:1.18em}
 .welcome-text p:not(.en){color:var(--muted);line-height:2.1}
-@media (max-width:860px){
+@media all{  /* PCでもスマホと同じレイアウトにする */
   .welcome-in{grid-template-columns:1fr;justify-items:center;text-align:center}
   .welcome .wrap{padding-left:0;padding-right:0}
   .welcome-movie{width:100%;aspect-ratio:9/14;border-radius:0;box-shadow:none}
@@ -126,8 +129,8 @@ footer .wrap{padding-block:28px;border-top:1px solid var(--line);display:flex;fl
 
 /* スマホ固定の予約バー */
 .bar{display:none}
-@media (max-width:760px){
-  .bar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:8;justify-content:center;
+@media all{
+  .bar{display:flex;position:fixed;left:50%;right:auto;width:min(100%,480px);transform:translateX(-50%);bottom:0;z-index:8;justify-content:center;
     background:color-mix(in srgb,var(--sumi) 90%,transparent);backdrop-filter:blur(8px);
     padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
   .bar .btn{width:100%;justify-content:space-between;min-height:46px}
